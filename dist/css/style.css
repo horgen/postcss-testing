@@ -1,0 +1,7 @@
+.test {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	font-size: 16px;
+	font-size: 1rem;
+}
