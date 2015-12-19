@@ -16,5 +16,9 @@
     "load-grunt-tasks": "^3.3.0",
     "pixrem": "^3.0.0",
     "time-grunt": "^1.2.2"
+  },
+  "dependencies": {
+    "bootstrap": "^4.0.0-alpha.2",
+    "font-awesome": "^4.5.0"
   }
 }
