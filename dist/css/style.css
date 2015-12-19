@@ -1,9 +1,9 @@
 .test {
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	font-size: 16px;
-	font-size: 1rem;
-}
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 16px;
+  font-size: 1rem;
+  background-color: yellow; }
 
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3RtcC9jc3Mvc3R5bGUuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usc0JBQWM7RUFBZCxxQkFBYztFQUFkLGNBQWM7RUFDZCxnQkFBZ0I7RUFBaEIsZ0JBQWdCO0VBQ2hCLHlCQUF5QixFQUFFIiwiZmlsZSI6InN0eWxlLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi50ZXN0IHtcbiAgZGlzcGxheTogZmxleDtcbiAgZm9udC1zaXplOiAxcmVtO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB5ZWxsb3c7IH1cbiJdfQ== */

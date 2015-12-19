@@ -27,19 +27,31 @@ module.exports = function(grunt) {
 			},
 		},
 
+		// https://github.com/sindresorhus/grunt-sass
+		sass: {
+			options: {
+				sourceMap: false
+			},
+			dist: {
+				files: {
+					'tmp/css/style.css': 'src/scss/style.scss'
+				}
+			}
+		},
+
 		// https://github.com/nDmitry/grunt-postcss
 		postcss: {
 			dev: {
 				options: {
 					map: {
-						inline: false
+						inline: true
 					},
 					processors: [
 						require('pixrem')(), // add fallbacks for rem units
 						require('autoprefixer')({browsers: 'last 2 versions'}) // add vendor prefixes
 					]
 				},
-				src: 'src/css/style.css',
+				src: 'tmp/css/style.css',
 				dest: 'dist/css/style.css'
 			},
 			prod: {
@@ -50,7 +62,7 @@ module.exports = function(grunt) {
 						require('cssnano')() // minify the result
 					]
 				},
-				src: 'src/css/style.css',
+				src: 'tmp/css/style.css',
 				dest: 'dist/css/style.min.css'
 			}
 
@@ -75,8 +87,8 @@ module.exports = function(grunt) {
 		// https://github.com/gruntjs/grunt-contrib-watch
 		watch: {
 			css: {
-				files: 'src/css/*.css',
-				tasks: ['postcss'],
+				files: 'src/scss/*.scss',
+				tasks: ['sass', 'postcss'],
 			},
 			html: {
 				files: 'src/*.html',
@@ -89,6 +101,7 @@ module.exports = function(grunt) {
 	// Task to run when doing 'grunt' in terminal.
 	grunt.registerTask('default', [
 		'copy',
+		'sass',
 		'postcss:dev',
 		'browserSync',
 		'watch'
@@ -97,6 +110,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('prod', [
 		'copy',
 		'processhtml',
+		'sass',
 		'postcss:prod'
 	]);
 };
