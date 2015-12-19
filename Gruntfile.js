@@ -29,17 +29,31 @@ module.exports = function(grunt) {
 
 		// https://github.com/nDmitry/grunt-postcss
 		postcss: {
-			options: {
-				map: false,
-				processors: [
-					require('pixrem')(), // add fallbacks for rem units
-					require('autoprefixer')({browsers: 'last 2 versions'}) // add vendor prefixes
-				]
-			},
-			dist: {
+			dev: {
+				options: {
+					map: {
+						inline: false
+					},
+					processors: [
+						require('pixrem')(), // add fallbacks for rem units
+						require('autoprefixer')({browsers: 'last 2 versions'}) // add vendor prefixes
+					]
+				},
 				src: 'src/css/style.css',
 				dest: 'dist/css/style.css'
+			},
+			prod: {
+				options: {
+					processors: [
+						require('pixrem')(), // add fallbacks for rem units
+						require('autoprefixer')({browsers: 'last 2 versions'}), // add vendor prefixes
+						require('cssnano')() // minify the result
+					]
+				},
+				src: 'src/css/style.css',
+				dest: 'dist/css/style.min.css'
 			}
+
 		},
 
 		// http://www.browsersync.io/docs/grunt/
@@ -62,20 +76,20 @@ module.exports = function(grunt) {
 		watch: {
 			css: {
 				files: 'src/css/*.css',
-            	tasks: ['postcss'],
+				tasks: ['postcss'],
 			},
 			html: {
 				files: 'src/*.html',
-            	tasks: ['copy'],
+				tasks: ['copy'],
 			}
-        }
+		}
 
 	});
 
 	// Task to run when doing 'grunt' in terminal.
 	grunt.registerTask('default', [
 		'copy',
-		'postcss',
+		'postcss:dev',
 		'browserSync',
 		'watch'
 	]);
@@ -83,6 +97,6 @@ module.exports = function(grunt) {
 	grunt.registerTask('prod', [
 		'copy',
 		'processhtml',
-		'postcss'
+		'postcss:prod'
 	]);
 };

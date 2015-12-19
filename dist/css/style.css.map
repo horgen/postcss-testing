@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/css/style.css"],"names":[],"mappings":"AAAA;CACC,sBAAc;CAAd,qBAAc;CAAd,cAAc;CACd,gBAAgB;CAAhB,gBAAgB;CAChB","file":"style.css","sourcesContent":[".test {\n\tdisplay: flex;\n\tfont-size: 1rem;\n}\n"]}
